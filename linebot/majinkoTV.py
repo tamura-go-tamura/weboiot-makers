@@ -48,7 +48,7 @@ def handle_message(event):
 @handler.add(BeaconEvent)
 def handle_beacon(event):
     #print(event.source.userid)
-    #モータを動かす関数を実行
+    motor.motor("open")
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
