@@ -6,8 +6,8 @@ import os
 
 app=Flask(__name__)
 #環境変数の取得
-YOUR_CHANNEL_ACCESS_TOKEN="8hEM97sJovHOEVuNhHUSbvA819D+HTa6GQ2qFrUbuyVU37GthqeN7S/u/V155tCO2D+NVy1YnVtwjte8/vufThjM6Pc53bc24XyftKnbukrhy0hgsD3RQqaH0R8KKm81R/Ir5YSzhyiz0zi2vmF5CAdB04t89/1O/w1cDnyilFU="
-YOUR_CHANNEL_SECRET="ecf2386eeb9fb34c9fac80e0cb96ae5a"
+YOUR_CHANNEL_ACCESS_TOKEN=""
+YOUR_CHANNEL_SECRET=""
 
 line_bot_api=LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler=WebhookHandler(YOUR_CHANNEL_SECRET)
