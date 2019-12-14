@@ -4,6 +4,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent,TextMessage,TextSendMessage,BeaconEvent
 import os
 import motor
+import acc
 
 app=Flask(__name__)
 #環境変数の取得
@@ -34,10 +35,13 @@ def handle_message(event):
 
     if text == "あけ"：
         motor.motor("open")
+        acc.Sensing_acceleration()
+
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
 
     elif text == "しめ":
         motor.motor("close")
+        acc.Sensing_acceleration()
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
 
     else:

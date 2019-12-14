@@ -13,12 +13,12 @@
 import FaBo3Axis_ADXL345
 import time
 import sys
+import motor
 
-adxl345 = FaBo3Axis_ADXL345.ADXL345()
 
 def Sensing_acceleration():
-
     #諸初期化
+    adxl345 = FaBo3Axis_ADXL345.ADXL345()
     open_ = 0
     close = 0
     y_p = 100
@@ -32,7 +32,7 @@ def Sensing_acceleration():
             x_n = axes["x"]
             y_n = axes["y"]
 
-
+            #一つ前のyの加速度との差を計算
             diff_y = y_n - y_p
 
             if x_n + y_n >= 10:#detect door open
@@ -55,6 +55,7 @@ def Sensing_acceleration():
 
         #here start motor_function 
         print("motor start!")
+        motor.motor("close")
 
 
     except KeyboardInterrupt:
