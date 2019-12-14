@@ -3,6 +3,7 @@ from linebot import LineBotApi,WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent,TextMessage,TextSendMessage,BeaconEvent
 import os
+import motor
 
 app=Flask(__name__)
 #環境変数の取得
@@ -26,14 +27,22 @@ def callback():
     return "OK"
 
 
-@app.route("/",methods=["POST","GET"])
-def maijinko():
-    return "majinkoTV~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 @handler.add(MessageEvent,message=TextMessage)
 def handle_message(event):
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
-    return "majinkoTV????"
+    text = event.text
+
+    if text == "あけ"：
+        motor.motor("open")
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+
+    elif text == "しめ":
+        motor.motor("close")
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+
+    else:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+
 
 
 @handler.add(BeaconEvent)
