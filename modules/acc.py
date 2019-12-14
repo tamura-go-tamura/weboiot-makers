@@ -26,7 +26,7 @@ def Sensing_acceleration():
 
     try:
         #door oprn and close ,door stop,  exit the loop
-        while diff_y == 0 and open_*close != 0:
+        while diff_y == 0 and open_*close == 0:
             axes = adxl345.read()
 
             x_n = axes["x"]
